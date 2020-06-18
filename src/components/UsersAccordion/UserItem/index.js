@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { ReactComponent as ArrowDown } from '../../../icons/arrow_down.svg';
 import { ReactComponent as ArrowUp } from '../../../icons/arrow_up.svg';
@@ -18,7 +19,19 @@ function UserItem({ isActive, login, onClick, repositories }) {
             </div>
             {isActive && <RepositoriesList repositories={repositories} />}
         </>
-    )
+    );
 };
+
+UserItem.propTypes = {
+    isActive: PropTypes.bool.isRequired,
+    login: PropTypes.string.isRequired,
+    onClick: PropTypes.func,
+    repositories: PropTypes.array
+}
+
+UserItem.defaultProps = {
+    onClick: () => { },
+    repositories: []
+}
 
 export default UserItem;

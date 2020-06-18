@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import RepositoriyItem from './RepositoryItem';
 
@@ -15,7 +16,11 @@ function RepositoriesList({ repositories }) {
 
     return (
         <div className='repositories-wrapper'>{renderRepositoriesList()}</div>
-    )
+    );
+};
+
+RepositoriesList.propTypes = {
+    repositories: PropTypes.array.isRequired,
 }
 
 export default RepositoriesList;

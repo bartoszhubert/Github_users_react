@@ -9,7 +9,7 @@ import './App.css';
 
 function App() {
   return (
-    <div className="App">
+    <div className="app">
       <Provider store={store}>
         <SearchBox />
         <UserAccordion />

@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import { ReactComponent as Star } from '../../../../../icons/star.svg';
 
 import './repositoryItem.css';
@@ -16,7 +18,17 @@ function RepositoriyItem({ description, name, stargazers_count }) {
                 </span>
             </div>
         </div>
-    )
+    );
+};
+
+RepositoriyItem.propTypes = {
+    description: PropTypes.string,
+    name: PropTypes.string.isRequired,
+    stargazers_count: PropTypes.number.isRequired
+}
+
+RepositoriyItem.defaultProps = {
+    description: ''
 }
 
 export default RepositoriyItem;
