@@ -11,9 +11,7 @@ export const actionTypes = {
 
 const action = (type, payload) => ({ type, payload });
 
-export const fetchUsers = (payload = {}) => dispatch => {
-    const { query } = payload;
-
+export const fetchUsers = query => dispatch => {
     dispatch(action(actionTypes.FETCH_USERS_REQUEST));
 
     return githubApi
@@ -28,15 +26,13 @@ export const fetchUsers = (payload = {}) => dispatch => {
         );
 };
 
-export const fetchRepositories = (payload = {}) => dispatch => {
-    const { user } = payload;
-
+export const fetchRepositories = user => dispatch => {
     dispatch(action(actionTypes.FETCH_REPOSITORIES_REQUEST));
 
     return githubApi
         .getRepositoriesByUser(user)
         .then(repositories =>
-            dispatch(action(actionTypes.FETCH_REPOSITORIES_SUCCESS, { repositories }))
+            dispatch(action(actionTypes.FETCH_REPOSITORIES_SUCCESS, { user, repositories }))
         )
         .catch(error =>
             dispatch(action(actionTypes.FETCH_REPOSITORIES_FAILURE, { error }))

@@ -3,6 +3,7 @@ import { Provider } from "react-redux";
 import store from "../../store";
 
 import SearchBox from '../SearchBox';
+import UserAccordion from '../UsersAccordion';
 
 import './App.css';
 
@@ -11,7 +12,7 @@ function App() {
     <div className="App">
       <Provider store={store}>
         <SearchBox />
-        USERS
+        <UserAccordion />
       </Provider>
     </div>
   );

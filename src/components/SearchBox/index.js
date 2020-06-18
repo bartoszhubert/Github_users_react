@@ -22,9 +22,10 @@ class Searchbox extends Component {
 
     onClickHandler = () => {
         const { query } = this.state;
+        const { isFetchingUsers } = this.props;
         const hasQueryChanged = this.myRef.current !== query;
 
-        if (this.props.isFetchingUsers || !hasQueryChanged) return;
+        if (isFetchingUsers || !hasQueryChanged || !query) return;
         this.myRef.current = query;
         this.props.fetchUsers(query);
     }
