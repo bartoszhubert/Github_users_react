@@ -27,16 +27,24 @@ class UserAccordion extends Component {
     onClickHandler = (index, login) => {
         const { fetchRepositories, repositories } = this.props;
 
+        if (this.state.activeItems[index]) {
+            this.setState({ activeItems: initialActiveItemsState });
+            return;
+        }
+
         this.setState({ activeItems: { ...initialActiveItemsState, [index]: true } });
         if (repositories[login]) return;
 
         fetchRepositories(login);
     }
 
-    renderUsers = () =>
-        this.props.selectedUsers.users.items.map(({ login }, index) =>
-            <UserItem key={index} login={login} isActive={this.state.activeItems[index]} onClick={() => this.onClickHandler(index, login)} />
+    renderUsers = () => {
+        const { repositories, selectedUsers } = this.props;
+
+        return selectedUsers.users.items.map(({ login }, index) =>
+            <UserItem key={index} login={login} repositories={repositories[login]} isActive={this.state.activeItems[index]} onClick={() => this.onClickHandler(index, login)} />
         );
+    }
 
     render() {
         if (!this.props.selectedUsers) return null;

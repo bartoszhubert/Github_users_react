@@ -1,0 +1,25 @@
+.repository-wrapper {
+    background-color: #979dac;
+    display: flex;
+    padding: 20px 10px;
+}
+.repository-wrapper:not(:last-child) {
+    margin-bottom: 10px;
+}
+.repository-text {
+    width: 70%;
+}
+.repository-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 5px 0;
+}
+.repository-star {
+    text-align: center;
+    width: 30%;
+}
+.repository-icon {
+    position: relative;
+    top: 3px;
+    left: 5px;
+}
