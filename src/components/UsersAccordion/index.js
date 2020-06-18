@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchRepositories } from '../../actions/index';
 
+import Loader from '../Loader';
 import UserItem from './UserItem';
 
 const initialActiveItemsState = {
@@ -39,15 +40,18 @@ class UserAccordion extends Component {
     }
 
     renderUsers = () => {
-        const { repositories, selectedUsers } = this.props;
+        const { isFetchingRepositories, repositories, selectedUsers } = this.props;
 
         return selectedUsers.users.items.map(({ login }, index) =>
-            <UserItem key={index} login={login} repositories={repositories[login]} isActive={this.state.activeItems[index]} onClick={() => this.onClickHandler(index, login)} />
+            <UserItem key={index} login={login} isFetchingRepositories={isFetchingRepositories} repositories={repositories[login]} isActive={this.state.activeItems[index]} onClick={() => this.onClickHandler(index, login)} />
         );
     }
 
     render() {
-        if (!this.props.selectedUsers) return null;
+        const { isFetchingUsers, selectedUsers } = this.props;
+
+        if (isFetchingUsers) return <Loader />;
+        if (!selectedUsers) return null;
 
         return (
             <div>
@@ -58,6 +62,8 @@ class UserAccordion extends Component {
 };
 
 const mapStateToProps = state => ({
+    isFetchingRepositories: state.users.isFetchingRepositories,
+    isFetchingUsers: state.users.isFetchingUsers,
     repositories: state.users.repositories,
     selectedUsers: state.users.selectedUsers
 });

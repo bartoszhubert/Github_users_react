@@ -7,7 +7,7 @@ import RepositoriesList from './RepositoriesList';
 
 import './userItem.css';
 
-function UserItem({ isActive, login, onClick, repositories }) {
+function UserItem({ isActive, isFetchingRepositories, login, onClick, repositories }) {
 
     return (
         <>
@@ -17,13 +17,14 @@ function UserItem({ isActive, login, onClick, repositories }) {
                 </div>
                 {isActive ? <ArrowUp /> : <ArrowDown />}
             </div>
-            {isActive && <RepositoriesList repositories={repositories} />}
+            {isActive && <RepositoriesList repositories={repositories} isFetchingRepositories={isFetchingRepositories} />}
         </>
     );
 };
 
 UserItem.propTypes = {
     isActive: PropTypes.bool.isRequired,
+    isFetchingRepositories: PropTypes.bool.isRequired,
     login: PropTypes.string.isRequired,
     onClick: PropTypes.func,
     repositories: PropTypes.array

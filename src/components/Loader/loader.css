@@ -1,0 +1,35 @@
+@keyframes spinner {
+  0% {
+    opacity: .2;
+  }
+  
+  20% {
+    opacity: 1;
+  }
+  
+  100% {
+    opacity: .2;
+  }
+}
+
+.loader {
+    text-align: center;
+}
+.loader span {
+    color: #aaa;
+    display: inline-block;
+    margin-left: 4px;
+    margin-right: 4px;
+    font-size: 80px;
+    line-height: 0.1;
+    animation-name: spinner;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-fill-mode: both;
+}
+.loader span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+.loader span:nth-child(3) {
+    animation-delay: 0.4s;
+}
