@@ -1,8 +1,8 @@
 
-Dependencies installation
+Dependency installation:
 
 ### `npm i`
 
-Run project
+Run project:
 
 ### `npm start`
