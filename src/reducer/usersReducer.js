@@ -23,17 +23,17 @@ export default (state = initialState, { type, payload }) => {
                 query: ''
             }
         case actionTypes.FETCH_USERS_SUCCESS:
-            // const { users, query } = payload;
-
             return {
                 ...state,
                 isFetchingUsers: false,
                 selectedUsers: payload
             }
         case actionTypes.FETCH_USERS_FAILURE:
+            const { error } = payload;
+
             return {
                 ...state,
-                error: 'xxxxxx',
+                error,
                 isFetchingUsers: false
             }
         case actionTypes.FETCH_REPOSITORIES_REQUEST:
@@ -50,7 +50,6 @@ export default (state = initialState, { type, payload }) => {
                 repositories: { ...state.repositories, [user]: repositories }
             }
         default:
-            // throw new Error();
             return state;
     };
 };
